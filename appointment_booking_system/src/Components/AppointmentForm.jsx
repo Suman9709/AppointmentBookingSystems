@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { bookAppointment } from './appointmentSlice';
+import { bookAppointment } from '../Features/appointments/appointmentSlice';
 import { nanoid } from '@reduxjs/toolkit';
-import { markSlotBooked } from './slotSlice';
-import girl from '../../Components/Images/girl.jpg';
+import { markSlotBooked } from '../Features/appointments/slotSlice';
+import girl from '../Components/Images/girl.jpg'
+
 
 const AppointmentForm = () => {
     const [name, setName] = useState('');
@@ -31,7 +32,7 @@ const AppointmentForm = () => {
     // const slots = useSelector(state =>
     //     state.slots.list.filter(slot => {
     //         if (slot.isBooked) return false;
-    
+
     //         const slotDateTime = new Date(`${slot.date} ${slot.time}`);
     //         return slotDateTime > new Date();
     //     })
@@ -40,53 +41,53 @@ const AppointmentForm = () => {
     const slots = useSelector(state => {
         const allSlots = state.slots.list;
         const appointments = state.appointments.list;
-    
+
         return allSlots.filter(slot => {
             const slotDateTime = new Date(`${slot.date} ${slot.time}`);
             if (slotDateTime <= new Date()) return false;
-    
+
             const isBooked = slot.isBooked;
             const isBookedByCurrentUser = appointments.some(
                 appt => appt.slotId === slot.id && appt.name === name
             );
-    
+
             const hasActiveAppointment = appointments.some(
                 appt => appt.slotId === slot.id
             );
             // Show slot if it's not booked or it's booked by this user
             // return !isBooked || isBookedByCurrentUser;
-            
-            
+
+
             return !isBooked || isBookedByCurrentUser || hasActiveAppointment;
         });
     });
-    
-    const appointments = useSelector(state => state.appointments.list); 
+
+    const appointments = useSelector(state => state.appointments.list);
 
     const handleSubmit = e => {
         e.preventDefault();
-    
+
         if (!name || !batch || !selectedSlotId) {
             alert('All fields are required');
             return;
         }
-    
+
         const selectedSlot = slots.find(slot => slot.id.toString() === selectedSlotId);
         if (!selectedSlot) {
             alert('Invalid slot selected');
             return;
         }
-    
+
 
         const alreadyBooked = appointments.some(
             (appt) => appt.name === name && appt.date === selectedSlot.date
         );
-    
+
         if (alreadyBooked) {
             alert("You have already booked an appointment for this date.");
             return;
         }
-    
+
         const newAppointment = {
             id: nanoid(),
             name,
@@ -95,16 +96,16 @@ const AppointmentForm = () => {
             time: selectedSlot.time,
             slotId: selectedSlot.id,
         };
-    
+
         dispatch(bookAppointment(newAppointment));
         dispatch(markSlotBooked(selectedSlot.id));
-    
+
         alert('Appointment booked successfully!');
         setName('');
         setBatch('');
         setSelectedSlotId('');
     };
-    
+
 
 
 

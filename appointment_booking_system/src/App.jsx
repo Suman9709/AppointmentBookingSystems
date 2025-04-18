@@ -1,13 +1,15 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import AppointmentList from './Features/appointments/appointmentList'
+import AppointmentList from './Components/AppointmentList'
 import NavBar from './Components/NavBar'
-import BookedCalenderView from './Features/appointments/BookedCalenderView'
-import AdminslotForm from './Features/appointments/AdminslotForm'
-import AdmincalendarView from './Features/appointments/AdmincalenderView'
-import LoginPage from './Features/appointments/LoginPage'
-import SignUp from './Features/appointments/SignUp'
-import AppointmentForm from './Features/appointments/AppointmentForm'
+
+import AdmincalendarView from './Components/AdmincalenderView'
+
+import AppointmentForm from './Components/AppointmentForm'
+import LoginPage from './Components/LoginPage'
+import SignUp from './Components/SignUp'
+import AdminslotForm from './Components/AdminslotForm'
+import BookedCalenderView from './Components/BookedCalenderView'
 
 const App = () => {
   return (

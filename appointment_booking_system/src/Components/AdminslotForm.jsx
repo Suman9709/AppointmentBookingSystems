@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addSlot } from './slotSlice';
+import { addSlot } from '../Features/appointments/slotSlice';
+// import { addSlot } from './slotSlice';
+// import { addSlot } from './slotSlice';
 
 const AdminslotForm = () => {
     const [date, setDate] = useState('');

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { userDeleteAppointment } from './appointmentSlice';
+import { userDeleteAppointment } from '../Features/appointments/appointmentSlice';
+
 
 const BookedCalenderView = () => {
   const dispatch = useDispatch();
@@ -42,6 +43,7 @@ const BookedCalenderView = () => {
                       className='bg-red-600 hover:bg-red-700 border border-red-500 px-3 py-1 text-white rounded'>
                       Delete
                     </button>
+                    
                 
                   </li>
                 ))}

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { login } from './AuthSlice';
+import { login } from '../Features/appointments/AuthSlice';
 import { Link, useNavigate } from 'react-router-dom';
-import calender from '../../Components/Images/cal.jpg'
+import calender from '../Components/Images/cal.jpg'
 
 const LoginPage = () => {
   const [username, setUsername] = useState('');

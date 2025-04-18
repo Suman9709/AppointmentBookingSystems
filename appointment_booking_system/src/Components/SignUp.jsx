@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { signUp } from './AuthSlice';
-import calender from '../../Components/Images/cal.jpg'
+import { signUp } from '../Features/appointments/AuthSlice';
+import calender from '../Components/Images/cal.jpg'
 
 const SignUp = () => {
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { adminDeleteAppointment, confirmAppointment, rejectAppointment } from './appointmentSlice';
+import { adminDeleteAppointment, confirmAppointment, rejectAppointment } from '../Features/appointments/appointmentSlice';
 
 const AdmincalendarView = () => {
     const appointments = useSelector((state) => state.appointments.list);
@@ -47,13 +47,12 @@ const AdmincalendarView = () => {
                                             <p className="text-sm font-medium">
                                                 Status:{" "}
                                                 <span
-                                                    className={`font-semibold ${
-                                                        slot.status === 'confirmed'
+                                                    className={`font-semibold ${slot.status === 'confirmed'
                                                             ? 'text-green-600'
                                                             : slot.status === 'rejected'
-                                                            ? 'text-red-600'
-                                                            : 'text-yellow-600'
-                                                    }`}
+                                                                ? 'text-red-600'
+                                                                : 'text-yellow-600'
+                                                        }`}
                                                 >
                                                     {slot.status || 'pending'}
                                                 </span>
@@ -63,28 +62,26 @@ const AdmincalendarView = () => {
                                                 <button
                                                     disabled={isFinalized}
                                                     onClick={() => dispatch(confirmAppointment(slot.id))}
-                                                    className={`text-sm px-3 py-1 rounded ${
-                                                        isFinalized
+                                                    className={`text-sm px-3 py-1 rounded ${isFinalized
                                                             ? 'bg-green-200 cursor-not-allowed'
                                                             : 'bg-green-500 text-white hover:bg-green-600'
-                                                    }`}
+                                                        }`}
                                                 >
                                                     Confirm
                                                 </button>
                                                 <button
                                                     disabled={isFinalized}
                                                     onClick={() => dispatch(rejectAppointment(slot.id))}
-                                                    className={`text-sm px-3 py-1 rounded ${
-                                                        isFinalized
+                                                    className={`text-sm px-3 py-1 rounded ${isFinalized
                                                             ? 'bg-red-200 cursor-not-allowed'
                                                             : 'bg-red-500 text-white hover:bg-red-600'
-                                                    }`}
+                                                        }`}
                                                 >
                                                     Reject
                                                 </button>
-                                                <button onClick={()=>dispatch(adminDeleteAppointment(slot.id))}
+                                                <button onClick={() => dispatch(adminDeleteAppointment(slot.id))}
                                                     className='border-1 bg-red-500 rounded-lg p-2 text-white hover:bg-red-600'
-                                                    > 
+                                                >
 
 
                                                     Delete
