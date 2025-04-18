@@ -52,7 +52,7 @@ const NavBar = () => {
                                     to="/"
                                     className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-150"
                                 >
-                                    Login
+                                    Home
                                 </Link>
 
                             </>
@@ -80,6 +80,15 @@ const NavBar = () => {
                                 </button>
                             </>
                         )}
+                        {!isAuthenticated && (
+                            <Link
+                                to="/"
+                                className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-150"
+                            >
+                                login
+                            </Link>
+                        )}
+
                     </div>
 
                     {/* Mobile menu button */}
