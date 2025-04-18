@@ -143,6 +143,20 @@ const NavBar = () => {
                                 >
                                     Home
                                 </Link>
+
+                            </>
+                        )}
+                        {!isAuthenticated && (
+                            <Link
+                                to="/"
+                                className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-150"
+                            >
+                                login
+                            </Link>
+                        )}
+
+                        {isAuthenticated && (
+                            <>
                                 <Link
                                     to="/book"
                                     onClick={() => setIsMenuOpen(false)}
@@ -157,18 +171,17 @@ const NavBar = () => {
                                 >
                                     Calendar
                                 </Link>
+
+                                <button
+                                    onClick={(e) => {
+                                        handleLogout(e);
+                                        setIsMenuOpen(false);
+                                    }}
+                                    className="block w-full text-left pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300"
+                                >
+                                    Logout
+                                </button>
                             </>
-                        )}
-                        {isAuthenticated && (
-                            <button
-                                onClick={(e) => {
-                                    handleLogout(e);
-                                    setIsMenuOpen(false);
-                                }}
-                                className="block w-full text-left pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300"
-                            >
-                                Logout
-                            </button>
                         )}
                     </div>
                 </div>
