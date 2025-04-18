@@ -63,25 +63,78 @@ const NavBar = () => {
 
             {/* Mobile Menu */}
             {isMenuOpen && (
-                <div className="md:hidden px-4 pt-2 pb-3 space-y-1">
-                    {isAuthenticated && role === 'admin' ? (
-                        <>
-                            <Link to="/adminform" onClick={() => setIsMenuOpen(false)} className="mobile-link">Admin Form</Link>
-                            <Link to="/admincalender" onClick={() => setIsMenuOpen(false)} className="mobile-link">Admin Calendar</Link>
-                            <button onClick={(e) => { handleLogout(e); setIsMenuOpen(false); }} className="mobile-link">Logout</button>
-                        </>
-                    ) : isAuthenticated && role === 'user' ? (
-                        <>
-                            <Link to="/" onClick={() => setIsMenuOpen(false)} className="mobile-link">Home</Link>
-                            <Link to="/book" onClick={() => setIsMenuOpen(false)} className="mobile-link">Appointment Form</Link>
-                            <Link to="/bookedcalender" onClick={() => setIsMenuOpen(false)} className="mobile-link">Calendar</Link>
-                            <button onClick={(e) => { handleLogout(e); setIsMenuOpen(false); }} className="mobile-link">Logout</button>
-                        </>
-                    ) : (
-                        <Link to="/" onClick={() => setIsMenuOpen(false)} className="mobile-link">Login</Link>
-                    )}
-                </div>
-            )}
+  <div className="md:hidden bg-white shadow-md rounded-b-lg px-6 py-4 space-y-3 transition-all duration-300 ease-in-out">
+    {isAuthenticated && role === 'admin' ? (
+      <>
+        <Link
+          to="/adminform"
+          onClick={() => setIsMenuOpen(false)}
+          className="block text-gray-800 hover:bg-blue-100 px-4 py-2 rounded-lg font-medium transition"
+        >
+          📝 Admin Form
+        </Link>
+        <Link
+          to="/admincalender"
+          onClick={() => setIsMenuOpen(false)}
+          className="block text-gray-800 hover:bg-blue-100 px-4 py-2 rounded-lg font-medium transition"
+        >
+          📅 Admin Calendar
+        </Link>
+        <button
+          onClick={(e) => {
+            handleLogout(e);
+            setIsMenuOpen(false);
+          }}
+          className="block w-full text-left text-red-600 hover:bg-red-100 px-4 py-2 rounded-lg font-medium transition"
+        >
+          🚪 Logout
+        </button>
+      </>
+    ) : isAuthenticated && role === 'user' ? (
+      <>
+        <Link
+          to="/"
+          onClick={() => setIsMenuOpen(false)}
+          className="block text-gray-800 hover:bg-blue-100 px-4 py-2 rounded-lg font-medium transition"
+        >
+          🏠 Home
+        </Link>
+        <Link
+          to="/book"
+          onClick={() => setIsMenuOpen(false)}
+          className="block text-gray-800 hover:bg-blue-100 px-4 py-2 rounded-lg font-medium transition"
+        >
+          🗓️ Appointment Form
+        </Link>
+        <Link
+          to="/bookedcalender"
+          onClick={() => setIsMenuOpen(false)}
+          className="block text-gray-800 hover:bg-blue-100 px-4 py-2 rounded-lg font-medium transition"
+        >
+          📆 Calendar
+        </Link>
+        <button
+          onClick={(e) => {
+            handleLogout(e);
+            setIsMenuOpen(false);
+          }}
+          className="block w-full text-left text-red-600 hover:bg-red-100 px-4 py-2 rounded-lg font-medium transition"
+        >
+          🚪 Logout
+        </button>
+      </>
+    ) : (
+      <Link
+        to="/"
+        onClick={() => setIsMenuOpen(false)}
+        className="block text-gray-800 hover:bg-blue-100 px-4 py-2 rounded-lg font-medium transition"
+      >
+        🔑 Login
+      </Link>
+    )}
+  </div>
+)}
+
         </nav>
     );
 };
