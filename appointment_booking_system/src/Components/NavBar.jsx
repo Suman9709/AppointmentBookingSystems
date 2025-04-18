@@ -32,14 +32,14 @@ const NavBar = () => {
                     <div className="hidden md:ml-6 md:flex md:items-center md:space-x-8">
                         {role === 'admin' ? (
                             <>
-                                <Link 
-                                    to="/adminform" 
+                                <Link
+                                    to="/adminform"
                                     className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-150"
                                 >
                                     Admin Form
                                 </Link>
-                                <Link 
-                                    to="/admincalender" 
+                                <Link
+                                    to="/admincalender"
                                     className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-150"
                                 >
                                     Admin Calendar
@@ -47,33 +47,38 @@ const NavBar = () => {
                             </>
                         ) : (
                             <>
-                                <Link 
-                                    to="/" 
+
+                                <Link
+                                    to="/"
                                     className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-150"
                                 >
-                                    Home
+                                    Login
                                 </Link>
-                                <Link 
-                                    to="/book" 
+
+                            </>
+                        )}
+                        {isAuthenticated && (
+
+                            <>
+                                <Link
+                                    to="/book"
                                     className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-150"
                                 >
                                     Book
                                 </Link>
-                                <Link 
-                                    to="/bookedcalender" 
+                                <Link
+                                    to="/bookedcalender"
                                     className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-150"
                                 >
                                     Calendar
                                 </Link>
+                                <button
+                                    onClick={handleLogout}
+                                    className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-150"
+                                >
+                                    Logout
+                                </button>
                             </>
-                        )}
-                        {isAuthenticated && (
-                            <button
-                                onClick={handleLogout}
-                                className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-150"
-                            >
-                                Logout
-                            </button>
                         )}
                     </div>
 
@@ -105,15 +110,15 @@ const NavBar = () => {
                     <div className="pt-2 pb-3 space-y-1">
                         {role === 'admin' ? (
                             <>
-                                <Link 
-                                    to="/adminform" 
+                                <Link
+                                    to="/adminform"
                                     onClick={() => setIsMenuOpen(false)}
                                     className="block pl-3 pr-4 py-2 border-l-4 border-blue-500 text-base font-medium text-blue-700 bg-blue-50"
                                 >
                                     Admin Form
                                 </Link>
-                                <Link 
-                                    to="/admincalender" 
+                                <Link
+                                    to="/admincalender"
                                     onClick={() => setIsMenuOpen(false)}
                                     className="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300"
                                 >
@@ -122,22 +127,22 @@ const NavBar = () => {
                             </>
                         ) : (
                             <>
-                                <Link 
-                                    to="/" 
+                                <Link
+                                    to="/"
                                     onClick={() => setIsMenuOpen(false)}
                                     className="block pl-3 pr-4 py-2 border-l-4 border-blue-500 text-base font-medium text-blue-700 bg-blue-50"
                                 >
                                     Home
                                 </Link>
-                                <Link 
-                                    to="/book" 
+                                <Link
+                                    to="/book"
                                     onClick={() => setIsMenuOpen(false)}
                                     className="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300"
                                 >
                                     Book
                                 </Link>
-                                <Link 
-                                    to="/bookedcalender" 
+                                <Link
+                                    to="/bookedcalender"
                                     onClick={() => setIsMenuOpen(false)}
                                     className="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300"
                                 >
