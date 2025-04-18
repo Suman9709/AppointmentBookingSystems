@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { confirmAppointment, rejectAppointment } from './appointmentSlice';
+import { adminDeleteAppointment, confirmAppointment, rejectAppointment } from './appointmentSlice';
 
 const AdmincalendarView = () => {
     const appointments = useSelector((state) => state.appointments.list);
@@ -81,6 +81,13 @@ const AdmincalendarView = () => {
                                                     }`}
                                                 >
                                                     Reject
+                                                </button>
+                                                <button onClick={()=>dispatch(adminDeleteAppointment(slot.id))}
+                                                    className='border-1 bg-red-500 rounded-lg p-2 text-white hover:bg-red-600'
+                                                    > 
+
+
+                                                    Delete
                                                 </button>
                                             </div>
                                         </li>

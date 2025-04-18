@@ -29,7 +29,7 @@ const LoginPage = () => {
 
 
   return (
-    <div className="min-h-screen  w-full flex flex-col md:flex-row items-center justify-center">
+    <div className="min-h-screen flex md:flex-row justify-center items-center gap-12 px-4 py-8 md:px-8 lg:px-28">
       <div className='w-1/2 hidden md:block'>
         <img src={calender} alt="calender" />
       </div>

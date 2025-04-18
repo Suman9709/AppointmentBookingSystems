@@ -50,8 +50,14 @@ const AppointmentForm = () => {
                 appt => appt.slotId === slot.id && appt.name === name
             );
     
+            const hasActiveAppointment = appointments.some(
+                appt => appt.slotId === slot.id
+            );
             // Show slot if it's not booked or it's booked by this user
-            return !isBooked || isBookedByCurrentUser;
+            // return !isBooked || isBookedByCurrentUser;
+            
+            
+            return !isBooked || isBookedByCurrentUser || hasActiveAppointment;
         });
     });
     
@@ -134,8 +140,7 @@ const AppointmentForm = () => {
     // };
 
     return (
-        <div className="min-h-screen flex  md:flex-row justify-center items-center gap-12 px-4 py-8 md:px-8 lg:px-28">
-            {/* Form Section */}
+        <div className="min-h-screen flex md:flex-row justify-center items-center gap-12 px-4 py-8 md:px-8 lg:px-28">
             <form
                 onSubmit={handleSubmit}
                 className="w-full max-w-md bg-white/30 backdrop-blur-xl rounded-2xl p-6 md:p-8 shadow-lg flex flex-col gap-4"

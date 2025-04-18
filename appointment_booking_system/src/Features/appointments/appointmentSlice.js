@@ -46,6 +46,10 @@ const appointmentSlice = createSlice({
             }
            
         },
+        adminDeleteAppointment:(state, action)=>{
+            state.list = state.list.filter(appoint=> appoint.id !== action.payload);
+            localStorage.setItem('bookedAppointments', JSON.stringify(state.list))
+        },
         rejectAppointment: (state, action) => {
             const appointment = state.list.find(appt => appt.id === action.payload);
             if (appointment) {
@@ -58,9 +62,19 @@ const appointmentSlice = createSlice({
             state.list = state.list.filter(appoint=> appoint.id !== action.payload);
             localStorage.setItem('bookedAppointments', JSON.stringify(state.list))
         }
+        // userDeleteAppointment: (state, action) => {
+        //     const deletedAppointment = state.list.find(appoint => appoint.id === action.payload);
+        //     if (deletedAppointment) {
+        //         // Dispatch unmarkSlotBooked for the slot when deleting appointment
+        //         dispatch(unmarkSlotBooked(deletedAppointment.slotId));
+                
+        //         state.list = state.list.filter(appoint => appoint.id !== action.payload);
+        //         localStorage.setItem('bookedAppointments', JSON.stringify(state.list));
+        //     }
+        // }
     },
 });
 
-export const { bookAppointment, confirmAppointment, rejectAppointment,userDeleteAppointment } = appointmentSlice.actions;
+export const { bookAppointment, confirmAppointment, rejectAppointment,userDeleteAppointment,adminDeleteAppointment } = appointmentSlice.actions;
 
 export default appointmentSlice.reducer;

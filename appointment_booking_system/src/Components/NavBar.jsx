@@ -20,83 +20,143 @@ const NavBar = () => {
     };
 
     return (
-        <nav className='w-full h-16 bg-cyan-500 flex justify-between px-4 md:px-8 items-center fixed top-0 z-50'>
-            <h1 className='text-xl md:text-2xl text-white font-bold'>Book Your Appointment</h1>
+        <nav className="bg-white shadow-lg fixed top-0 w-full z-50">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="flex justify-between h-16">
+                    {/* Logo/Brand */}
+                    <div className="flex-shrink-0 flex items-center">
+                        <h1 className="text-xl font-bold text-gray-900">Appointment System</h1>
+                    </div>
 
-            {/* Hamburger for mobile */}
-            <button
-                className='md:hidden text-white focus:outline-none'
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    {isMenuOpen ? (
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                    ) : (
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                    )}
-                </svg>
-            </button>
-
-            {/* Desktop menu */}
-            <ul className='hidden md:flex space-x-4 lg:space-x-6 text-white font-medium items-center'>
-                {role === 'admin' ? (
-                    <>
-                        <li><Link to="/adminform" className="hover:underline px-2 py-1">Admin Form</Link></li>
-                        <li><Link to="/admincalender" className="hover:underline px-2 py-1">Admin Calendar</Link></li>
-                    </>
-                ) : (
-                    <>
-                        <li><Link to="/" className="hover:underline px-2 py-1">Home</Link></li>
-                        <li><Link to="/book" className="hover:underline px-2 py-1">Book</Link></li>
-                        <li><Link to="/bookedcalender" className="hover:underline px-2 py-1">Calendar</Link></li>
-                    </>
-
-                )}
-                {isAuthenticated && (
-                    <li>
-                        <button
-                            onClick={handleLogout}
-                            type="button"
-                            className="hover:underline px-2 py-1 text-white"
-                        >
-                            Logout
-                        </button>
-                    </li>
-                )}
-            </ul>
-
-            {/* Mobile menu */}
-            {isMenuOpen && (
-                <div className='md:hidden absolute top-16 left-0 right-0 bg-cyan-600 shadow-lg'>
-                    <ul className='flex flex-col space-y-2 p-4 text-white font-medium items-center '>
+                    {/* Desktop Menu */}
+                    <div className="hidden md:ml-6 md:flex md:items-center md:space-x-8">
                         {role === 'admin' ? (
-
                             <>
-                                <li><Link to="/adminform" className="block hover:bg-cyan-500 px-4 py-2 rounded" onClick={() => setIsMenuOpen(false)}>Admin Form</Link></li>
-                                <li><Link to="/admincalender" className="block hover:bg-cyan-500 px-4 py-2 rounded" onClick={() => setIsMenuOpen(false)}>Admin Calendar</Link></li>
+                                <Link 
+                                    to="/adminform" 
+                                    className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-150"
+                                >
+                                    Admin Form
+                                </Link>
+                                <Link 
+                                    to="/admincalender" 
+                                    className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-150"
+                                >
+                                    Admin Calendar
+                                </Link>
                             </>
-
                         ) : (
                             <>
-                                <li><Link to="/" className="block hover:bg-cyan-500 px-4 py-2 rounded" onClick={() => setIsMenuOpen(false)}>Home</Link></li>
-                                <li><Link to="/book" className="block hover:bg-cyan-500 px-4 py-2 rounded" onClick={() => setIsMenuOpen(false)}>Book</Link></li>
-                                <li><Link to="/bookedcalender" className="block hover:bg-cyan-500 px-4 py-2 rounded" onClick={() => setIsMenuOpen(false)}>Calendar</Link></li>
+                                <Link 
+                                    to="/" 
+                                    className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-150"
+                                >
+                                    Home
+                                </Link>
+                                <Link 
+                                    to="/book" 
+                                    className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-150"
+                                >
+                                    Book
+                                </Link>
+                                <Link 
+                                    to="/bookedcalender" 
+                                    className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-150"
+                                >
+                                    Calendar
+                                </Link>
                             </>
                         )}
                         {isAuthenticated && (
-                            <li>
-                                <button
-                                    onClick={(e) => {
-                                        handleLogout(e);
-                                        setIsMenuOpen(false);
-                                    }}
-                                    className="block hover:bg-cyan-500 px-4 py-2 rounded"
-                                >
-                                    Logout
-                                </button>
-                            </li>
+                            <button
+                                onClick={handleLogout}
+                                className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-150"
+                            >
+                                Logout
+                            </button>
                         )}
-                    </ul>
+                    </div>
+
+                    {/* Mobile menu button */}
+                    <div className="md:hidden flex items-center">
+                        <button
+                            onClick={() => setIsMenuOpen(!isMenuOpen)}
+                            className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-100 focus:outline-none transition duration-150"
+                            aria-expanded="false"
+                        >
+                            <span className="sr-only">Open main menu</span>
+                            {isMenuOpen ? (
+                                <svg className="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            ) : (
+                                <svg className="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                                </svg>
+                            )}
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            {/* Mobile Menu */}
+            {isMenuOpen && (
+                <div className="md:hidden">
+                    <div className="pt-2 pb-3 space-y-1">
+                        {role === 'admin' ? (
+                            <>
+                                <Link 
+                                    to="/adminform" 
+                                    onClick={() => setIsMenuOpen(false)}
+                                    className="block pl-3 pr-4 py-2 border-l-4 border-blue-500 text-base font-medium text-blue-700 bg-blue-50"
+                                >
+                                    Admin Form
+                                </Link>
+                                <Link 
+                                    to="/admincalender" 
+                                    onClick={() => setIsMenuOpen(false)}
+                                    className="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300"
+                                >
+                                    Admin Calendar
+                                </Link>
+                            </>
+                        ) : (
+                            <>
+                                <Link 
+                                    to="/" 
+                                    onClick={() => setIsMenuOpen(false)}
+                                    className="block pl-3 pr-4 py-2 border-l-4 border-blue-500 text-base font-medium text-blue-700 bg-blue-50"
+                                >
+                                    Home
+                                </Link>
+                                <Link 
+                                    to="/book" 
+                                    onClick={() => setIsMenuOpen(false)}
+                                    className="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300"
+                                >
+                                    Book
+                                </Link>
+                                <Link 
+                                    to="/bookedcalender" 
+                                    onClick={() => setIsMenuOpen(false)}
+                                    className="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300"
+                                >
+                                    Calendar
+                                </Link>
+                            </>
+                        )}
+                        {isAuthenticated && (
+                            <button
+                                onClick={(e) => {
+                                    handleLogout(e);
+                                    setIsMenuOpen(false);
+                                }}
+                                className="block w-full text-left pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300"
+                            >
+                                Logout
+                            </button>
+                        )}
+                    </div>
                 </div>
             )}
         </nav>

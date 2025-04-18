@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux'
 const AppointmentList = () => {
 
     const appointments = useSelector(state => state.appointments.list)
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     return (
         <div className='mt-20'>
             <div>

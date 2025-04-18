@@ -30,11 +30,17 @@ const slotSlice = createSlice({
             // }
              // Remove the slot from the list
              state.list = state.list.filter(slot => slot.id !== action.payload);
-             // Update localStorage with new list
              localStorage.setItem('availableSlots', JSON.stringify(state.list));
+        },
+        unmarkSlotBooked: (state, action) => {
+            const slot = state.list.find(slot => slot.id === action.payload);
+            if (slot) {
+                slot.isBooked = false;
+                localStorage.setItem('availableSlots', JSON.stringify(state.list));
+            }
         },
     },
 });
 
-export const { markSlotBooked, addSlot } = slotSlice.actions;
+export const { markSlotBooked, addSlot, unmarkSlotBooked } = slotSlice.actions;
 export default slotSlice.reducer;
