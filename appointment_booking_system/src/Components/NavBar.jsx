@@ -33,7 +33,7 @@ const NavBar = () => {
                 <>
                     <Link to="/" className="nav-link">Home</Link>
                     <Link to="/book" className="nav-link">Appointment Form</Link>
-                    <Link to="/bookedcalender" className="nav-link">Calendar</Link>
+                    {/* <Link to="/bookedcalender" className="nav-link">Calendar</Link> */}
                     <button onClick={handleLogout} className="nav-link">Logout</button>
                 </>
             );

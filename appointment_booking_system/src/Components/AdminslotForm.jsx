@@ -81,7 +81,7 @@ const AdminslotForm = () => {
             minute: '2-digit',
             hour12: true
         });
-    
+        const duration = Math.round((endTime - startTime) / 60000); 
         dispatch(addSlot({
             date: new Date(date).toISOString(),
             time: formattedTime,

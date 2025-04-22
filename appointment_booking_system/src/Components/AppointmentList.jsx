@@ -16,7 +16,6 @@ const AppointmentList = () => {
                     appointments.map(appointment => (
                         <li key={appointment.id}>
                             {appointment.name} - {appointment.batch} - {appointment.date} - {appointment.time}
-                            {/* <button onClick={() => dispatch(removeAppointment(appointment))}>remove</button> */}
                         </li>
                     ))
                 }

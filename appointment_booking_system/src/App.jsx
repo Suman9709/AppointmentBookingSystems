@@ -27,7 +27,7 @@ const App = () => {
           {/* All User Routes */}
           <Route path='/book' element={<AppointmentForm />} />
           <Route path='/appointments' element={<AppointmentList />} />
-          <Route path='/bookedcalender' element={<BookedCalenderView />} />
+          {/* <Route path='/bookedcalender' element={<BookedCalenderView />} /> */}
         </Routes>
       </div>
     </Router>
