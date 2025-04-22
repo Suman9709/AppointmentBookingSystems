@@ -12,11 +12,16 @@ const slotSlice = createSlice({
         addSlot: (state, action) => {
 
             const newSlots = {
-                id: nanoid(),
-                name: action.payload.name,
-                date: action.payload.date,
-                time: action.payload.time,
-                isBooked: false,
+                
+                    id: nanoid(), // Generate a unique ID
+                    name: action.payload.name || '', // Name of the admin/user (optional)
+                    date: action.payload.date, // Date of the slot
+                    time: action.payload.time, // Human-readable time (e.g., 10:30 AM)
+                    time24: action.payload.time24, // 24-hour format time (e.g., 10:30)
+                    duration: action.payload.duration, // Duration of the slot
+                    from: action.payload.from, // Start time as ISO string
+                    to: action.payload.to, // End time as ISO string
+                    isBooked: false, // Initially the slot is not booked
             };
             state.list.push(newSlots)
             localStorage.setItem('availableSlots', JSON.stringify(state.list)) 
@@ -39,8 +44,11 @@ const slotSlice = createSlice({
                 localStorage.setItem('availableSlots', JSON.stringify(state.list));
             }
         },
+        removeSlot: (state, action) => {
+            state.list.splice(action.payload, 1);
+        },
     },
 });
 
-export const { markSlotBooked, addSlot, unmarkSlotBooked } = slotSlice.actions;
+export const { markSlotBooked, addSlot, unmarkSlotBooked, removeSlot } = slotSlice.actions;
 export default slotSlice.reducer;
